@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 
 const URL_BASE = `/api/v1/`;
 const URL_ACCOUNT = `${URL_BASE}me/`;
+const URL_URL_LIST = `${URL_BASE}url/`;
 
 const baseOptions = {
   credentials: 'include',
@@ -31,8 +32,13 @@ const fetchAccount = () => {
   return getJson(`${URL_ACCOUNT}`);
 };
 
+const fetchUrlList = () => {
+  return getJson(`${URL_URL_LIST}`);
+};
+
 const Api = {
-  fetchAccount
+  fetchAccount,
+  fetchUrlList,
 };
 
 export default Api;

@@ -9,7 +9,13 @@ import React from 'react';
 const App = ({ children, ...others }) => (
   <div>
     <div className="container" style={{ width: 970, marginTop: 70, marginBottom: 20 }}>
-      {children}
+      <div>
+        <a href="/">Home</a>
+        <a href="/a/account/">Account</a>
+      </div>
+      <div>
+        {children}
+      </div>
     </div>
   </div>
 );

@@ -3,6 +3,7 @@
  */
 
 import account from './account'
+import urlList from './url-list'
 
 export function action (type, data = {}) {
   return { type, ...data };
@@ -10,4 +11,5 @@ export function action (type, data = {}) {
 
 export default {
   ...account,
+  ...urlList,
 }
