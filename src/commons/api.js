@@ -63,7 +63,7 @@ const createUrl = (url) => {
 };
 
 const updateUrl = (url) => {
-  return postJson(`${URL_URL_LIST}${url.slug}/`, url);
+  return postJson(`${URL_URL_LIST}${url.old_slug}/`, url);
 };
 
 const deleteUrl = (url) => {

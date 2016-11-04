@@ -4,7 +4,7 @@ class TextInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: props['value'] || ""
     };
   }
 
@@ -29,7 +29,7 @@ class TextInput extends React.Component {
     } = this.props;
 
     return (
-      <div className="shopee-input">
+      <div>
         <input
           type={type}
           placeholder={placeholder}
@@ -45,6 +45,7 @@ class TextInput extends React.Component {
 TextInput.propTypes = {
   type: React.PropTypes.string,
   placeholder:  React.PropTypes.string,
+  value:  React.PropTypes.string,
   onFocus:  React.PropTypes.func,
 };
 

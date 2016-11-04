@@ -20,7 +20,7 @@ function UrlList ({ urlList, addUrl, ...others }) {
         </tr>
         </thead>
         <tbody>
-        {urlList.map(u => <Url key={u.slug} url={u} {...others}/>)}
+        {urlList.map(u => <Url key={JSON.stringify(u)} url={u} {...others}/>)}
         </tbody>
       </Table>
 

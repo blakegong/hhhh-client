@@ -5,11 +5,11 @@
 
 import React from 'react';
 
-class TextInput extends React.Component {
+class SwitchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: props['value'] || false
     };
   }
 
@@ -18,8 +18,8 @@ class TextInput extends React.Component {
       this.props.onFocus();
   }
 
-  onChange(e) {
-    const value = e.target.value;
+  toggleValue() {
+    let value = !this.getValue();
     this.setState({value});
   }
 
@@ -29,33 +29,35 @@ class TextInput extends React.Component {
 
   render() {
     const {
-      type,
-      placeholder
+      title
     } = this.props;
 
     return (
-      <div className="shopee-input">
-        <input
-          type={type}
-          placeholder={placeholder}
-          value={this.state.value}
-          onFocus={this.onFocus.bind(this)}
-          onChange={this.onChange.bind(this)}
-        />
+      <div>
+        <span>{title}</span>
+        <div onClick={this.toggleValue.bind(this)}>
+          {(() => {
+            if (this.getValue()) {
+              return "Selected"
+            } else {
+              return "Not Selected"
+            }
+          })()}
+        </div>
       </div>
     );
   }
 }
 
-TextInput.propTypes = {
-  type: React.PropTypes.string,
-  placeholder:  React.PropTypes.string,
+SwitchInput.propTypes = {
+  value: React.PropTypes.bool,
+  title:  React.PropTypes.string,
   onFocus:  React.PropTypes.func,
 };
 
-TextInput.defaultProps = {
+SwitchInput.defaultProps = {
   type: 'text',
   placeholder: ''
 };
 
-export default TextInput;
+export default SwitchInput;

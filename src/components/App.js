@@ -3,21 +3,24 @@
  */
 
 import React from 'react';
-// import Header from './home/Header';
-// import Footer from './home/Footer'
 
-const App = ({ children, ...others }) => (
-  <div>
-    <div className="container" style={{ width: 970, marginTop: 70, marginBottom: 20 }}>
-      <div>
-        <a href="/">Home</a>
-        <a href="/a/account/">Account</a>
-      </div>
-      <div>
-        {children}
+export default function({ account, children, goTo, ...others }) {
+  return (
+    <div>
+      <div className="container" style={{width: 970, marginTop: 70, marginBottom: 20}}>
+        <div>
+          <a onClick={() => goTo('/')}>Home</a>
+          {account['email'] ? (
+            <a onClick={() => goTo('/a/account/')}>Account</a>
+          ) : (
+            <a href="/api/v1/google_login/">Log In</a>
+          )}
+        </div>
+        <div>
+          {children}
+        </div>
       </div>
     </div>
-  </div>
-);
+  )
+};
 
-export default App;
