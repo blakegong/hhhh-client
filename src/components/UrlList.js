@@ -1,10 +1,9 @@
 /**
  * Created by gongy on 4/11/16.
  */
-
 import React from 'react';
-import { Button, Table } from 'react-bootstrap';
-import Url from './Url'
+import { Table } from 'react-bootstrap';
+import Url from './Url';
 import AddUrlBox from './AddUrlBox';
 
 function UrlList ({ urlList, addUrl, ...others }) {
@@ -15,6 +14,7 @@ function UrlList ({ urlList, addUrl, ...others }) {
         <tr>
           <th>When I say</th>
           <th>Actually I mean</th>
+          <th>And I would call you</th>
           <th/>
           <th/>
         </tr>

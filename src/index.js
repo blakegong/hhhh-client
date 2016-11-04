@@ -11,11 +11,9 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
 import sagas from './sagas';
 import 'bootstrap/dist/css/bootstrap.css';
-import App from './containers/App'
-import AccountPage from './containers/AccountPage'
-import UrlList from './containers/UrlList';
+import App from './containers/App';
+import AccountPage from './containers/AccountPage';
 import Home from './containers/Home';
-
 
 const sagaMiddleware = createSagaMiddleware();
 const routerHistoryMiddleware = routerMiddleware(browserHistory);

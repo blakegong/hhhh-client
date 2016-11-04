@@ -16,33 +16,37 @@ class Url extends React.Component {
     };
   }
 
-  toggleEdit() {
+  toggleEdit () {
     if (this.state.isEditing) {
       this.props.updateUrl({
         is_private: this.isPrivateInput.getValue(),
         old_slug: this.state.slug,
         slug: this.slugInput.getValue(),
         target: this.targetInput.getValue(),
+        title: this.titleInput.getValue()
       })
     }
 
     let isEditing = !this.state.isEditing;
-    this.setState({isEditing})
+    this.setState({ isEditing })
   }
-
 
   render () {
     if (this.state.isEditing) {
       return (
         <tr>
           <td>
-            <TextInput ref={(input) => this.slugInput = input} value={this.state.slug}  />
+            g/
+            <TextInput ref={(input) => this.slugInput = input} value={this.state.slug}/>
           </td>
           <td>
-            <TextInput ref={(input) => this.targetInput = input} value={this.state.target} />
+            <TextInput ref={(input) => this.targetInput = input} value={this.state.target}/>
           </td>
           <td>
-            <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input} value={this.state.is_private} />
+            <TextInput ref={(input) => this.titleInput = input} value={this.state.title}/>
+          </td>
+          <td>
+            <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input} value={this.state.is_private}/>
           </td>
           <td>
             <Button onClick={this.toggleEdit.bind(this)}>Edit</Button>
@@ -55,6 +59,7 @@ class Url extends React.Component {
         <tr>
           <td><a href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a></td>
           <td>{this.state.target}</td>
+          <td>{this.state.title}</td>
           <td>{this.state.is_private ? "Private" : "Global"}</td>
           <td>
             <Button onClick={this.toggleEdit.bind(this)}>Edit</Button>
@@ -70,7 +75,7 @@ Url.propTypes = {
   url: React.PropTypes.shape({
     slug: React.PropTypes.string,
     target: React.PropTypes.string
-  }),
+  }).required,
   updateUrl: React.PropTypes.func,
   removeUrl: React.PropTypes.func
 };
