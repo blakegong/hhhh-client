@@ -12,7 +12,9 @@ import reducer from './reducers';
 import sagas from './sagas';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './containers/App'
+import AccountPage from './containers/AccountPage'
 import UrlList from './containers/UrlList';
+
 
 const sagaMiddleware = createSagaMiddleware();
 const routerHistoryMiddleware = routerMiddleware(browserHistory);
@@ -29,6 +31,9 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={UrlList}/>
+        <Route path="a/">
+          <Route path="account/" component={AccountPage} />
+        </Route>
       </Route>
     </Router>
   </Provider>,

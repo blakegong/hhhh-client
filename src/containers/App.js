@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   const fetchAccount = () => dispatch(Actions.fetchAccount.requested());
-  // const fetchUrlList = () => dispatch({ type: ActionTypes.FETCH_URL_LIST });
 
   return {
     signOut: () => dispatch({ type: ActionTypes.SIGN_OUT.REQUESTED }),
