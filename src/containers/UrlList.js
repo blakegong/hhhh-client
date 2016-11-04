@@ -2,43 +2,29 @@
  * Created by gongy on 4/11/16.
  */
 
-import React, { Component } from 'react'
-import UrlList from '../components/UrlList'
+import { connect } from 'react-redux';
+import Actions from '../actions';
+import withLifecycle from '../utils/hoc-lifecycle';
+import UrlList from '../components/UrlList';
 
-class UrlListContainer extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      list: [
-        { 'key': 'dinner', 'url': 'http://dinner.garenanow.com' },
-        { 'key': 'people', 'url': 'http://people.garenanow.com' }
-      ]
-    }
+const mapStateToProps = (state, ownProps) => {
+  return {
+    urlList: state.urlList
   }
+};
 
-  addUrl = (url) => {
-    this.setState({ list: [...this.list, url] })
-  };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const fetchUrlList = () => dispatch(Actions.fetchUrlList.requested());
 
-  removeUrl = (url) => {
-    this.setState({ list: this.list.filter(u => u.key !== url.key) });
-  };
-
-  updateUrl = (url) => {
-    const list = this.list.map(u => {
-      if (u.key === url.key)
-        return url;
-      else
-        return u;
-    });
-    this.setState({ list });
-  };
-
-  render () {
-    return (
-      <UrlList urlList={this.state.list} addUrl={this.addUrl} removeUrl={this.removeUrl} updateUrl={this.updateUrl}/>
-    );
+  return {
+    addUrl: (url) => dispatch(Actions.createUrl.requested(url)),
+    updateUrl: (url) => dispatch(Actions.updateUrl.requested(url)),
+    removeUrl: (url) => dispatch(Actions.deleteUrl.requested(url)),
+    onWillMount: [fetchUrlList]
   }
-}
+};
 
-export default UrlListContainer;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withLifecycle(UrlList));

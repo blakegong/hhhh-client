@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ActionTypes from '../actions/action-types';
 import App from '../components/App';
 import Actions from '../actions/'
-import withLifecycle from '../utils/hocLifecycle';
+import withLifecycle from '../utils/hoc-lifecycle';
 
 const mapStateToProps = (state) => {
   return {

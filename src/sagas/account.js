@@ -1,12 +1,10 @@
 /**
  * Created by gongy on 4/11/16.
  */
-
-import { takeEvery, takeLatest } from 'redux-saga';
+import { takeEvery } from 'redux-saga';
 import { call, fork, put } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
 import Api from '../commons/api';
-import Actions from '../actions'
+import Actions from '../actions';
 import ActionTypes from '../actions/action-types';
 
 function* fetchAccount () {

@@ -14,9 +14,7 @@ const baseOptions = {
   }
 };
 
-async function getJson (url) {
-  const response = await fetch(url, baseOptions);
-
+async function process (response) {
   if (response.status > 500) {
     let error = new Error(response.statusText);
     error.response = response;
@@ -28,6 +26,30 @@ async function getJson (url) {
   return await response.json();
 }
 
+async function getJson (url) {
+  const response = await fetch(url, baseOptions);
+  return await process(response);
+}
+
+async function postJson (url, data) {
+  const options = {
+    ...baseOptions,
+    method: 'post',
+    body: JSON.stringify(data)
+  };
+  const response = await fetch(url, options);
+  return await process(response);
+}
+
+async function deleteReq (url) {
+  const options = {
+    ...baseOptions,
+    method: 'delete'
+  };
+  const response = await fetch(url, options);
+  return await process(response);
+}
+
 const fetchAccount = () => {
   return getJson(`${URL_ACCOUNT}`);
 };
@@ -36,9 +58,25 @@ const fetchUrlList = () => {
   return getJson(`${URL_URL_LIST}`);
 };
 
+const createUrl = (url) => {
+  return postJson(`${URL_URL_LIST}`, url);
+};
+
+const updateUrl = (url) => {
+  return postJson(`${URL_URL_LIST}${url.slug}/`, url);
+};
+
+const deleteUrl = (url) => {
+  return deleteReq(`${URL_URL_LIST}${url.slug}/`);
+};
+
 const Api = {
   fetchAccount,
+
   fetchUrlList,
+  createUrl,
+  updateUrl,
+  deleteUrl
 };
 
 export default Api;

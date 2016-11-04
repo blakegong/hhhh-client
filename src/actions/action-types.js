@@ -16,9 +16,9 @@ const SIGN_OUT = createRequestTypes('SIGN_OUT');
 // Service related
 const FETCH_URL_LIST = createRequestTypes('FETCH_URL_LIST');
 const CREATE_URL = createRequestTypes('CREATE_URL');
-const FETCH_URL_BY_ID = createRequestTypes('FETCH_URL_BY_ID');
-const UPDATE_URL_BY_ID = createRequestTypes('UPDATE_URL_BY_ID');
-const DELETE_URL_BY_ID = createRequestTypes('DELETE_URL_BY_ID');
+const FETCH_URL = createRequestTypes('FETCH_URL');
+const UPDATE_URL = createRequestTypes('UPDATE_URL');
+const DELETE_URL = createRequestTypes('DELETE_URL');
 
 const ActionTypes = {
   FETCH_ACCOUNT,
@@ -26,9 +26,9 @@ const ActionTypes = {
 
   FETCH_URL_LIST,
   CREATE_URL,
-  FETCH_URL_BY_ID,
-  UPDATE_URL_BY_ID,
-  DELETE_URL_BY_ID,
+  FETCH_URL,
+  UPDATE_URL,
+  DELETE_URL,
 };
 
 export default ActionTypes;
