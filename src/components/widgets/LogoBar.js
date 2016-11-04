@@ -23,6 +23,7 @@ let styles = {
     backgroundSize: 'cover',
     textIndent: "-9999px",
     opacity: 0.8,
+    cursor: "pointer",
 
     ":hover": {
       opacity: 1,

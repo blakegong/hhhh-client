@@ -7,12 +7,13 @@ import AccountBar from './widgets/AccountBar';
 import LogoBar from './widgets/LogoBar';
 
 import bg1 from '../images/bg_1.jpg';
+import bg2 from '../images/bg_2.jpg';
 
 let styles = {
   container: {
     width: "100%",
     height: "100%",
-    backgroundImage: `url(${bg1})`,
+    backgroundImage: `url(${bg2})`,
     backgroundSize: 'cover',
   }
 };

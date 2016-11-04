@@ -3,30 +3,53 @@
  */
 
 import React from 'react';
+import Radium from 'radium';
 
 let styles = {
   wrapper: {
     position: "absolute",
-    right: "0",
-    top: "0",
+    right: "5px",
+    top: "5px",
+    width: "220px",
+    height: "70px",
+    display: "flex",
+    flexDirection: "row",
+    padding: "10px",
+    cursor: "pointer",
+    ":hover": {
+      background: "rgba(255,255,255,0.2)"
+    }
+  },
+  info: {
+    display: "flex",
+    flexDirection: "column",
   },
   profilePicture: {
     width: "50px",
     height: "50px",
-    borderRadius: "25px"
+    borderRadius: "25px",
+    marginRight: "5px"
   },
   username: {
-    color: "#FFFFFF"
+    color: "#FFFFFF",
+    margin: "5px 5px 0 5px",
+    fontSize: "15px"
+  },
+  email: {
+    color: "#FFFFFF",
+    margin: "2px 5px 5px 5px",
+    fontSize: "12px"
   }
 };
 
-export default function({ account, goTo, ...others }) {
+export default Radium(function({ account, goTo, ...others }) {
   if (account['email']) {
     return (
-      <div style={styles.wrapper}>
-        <div onClick={() => goTo('/a/account/')}>
-          <img style={styles.profilePicture} src={account['profile_picture']} />
+      <div style={styles.wrapper} onClick={() => goTo('/a/account/')}>
+        <img style={styles.profilePicture} src={account['profile_picture']} />
+        <div style={styles.info}>
           <div style={styles.username}>{account['username']}</div>
+          <div style={styles.email}>{account['email']}</div>
         </div>
       </div>
     )
@@ -38,5 +61,5 @@ export default function({ account, goTo, ...others }) {
       )
   }
 
-};
+});
 
