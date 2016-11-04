@@ -2,31 +2,58 @@
  * Created by gongy on 4/11/16.
  */
 import React from 'react';
+import Radium from 'radium';
 import { Table } from 'react-bootstrap';
 import Url from './Url';
 import AddUrlBox from './AddUrlBox';
 
+const styles = {
+  ul: {
+    display: "block",
+    padding: "0 30px 50px"
+  },
+  li: {
+    display: "block"
+  },
+  headerRow: {
+    display: "flex",
+    flexDirection: "row",
+    background: "#f0f2f5",
+    justifyContent: "space-between"
+  },
+  rowElement: {
+    padding: "10px 20px",
+    flexBasis: "20%"
+  },
+  rowElementLarge: {
+    padding: "10px 20px",
+    flexBasis: "40%"
+  }
+};
+
 function UrlList ({ urlList, addUrl, ...others }) {
   return (
     <div>
-      <Table>
-        <thead>
-        <tr>
-          <th>When I say</th>
-          <th>Actually I mean</th>
-          <th>And I would call you</th>
-          <th/>
-          <th/>
-        </tr>
-        </thead>
-        <tbody>
-        {urlList.map(u => <Url key={JSON.stringify(u)} url={u} {...others}/>)}
-        </tbody>
-      </Table>
-
-      <AddUrlBox addUrl={addUrl} />
+      <ul style={styles.ul}>
+        <li style={styles.li}>
+          <div style={styles.headerRow}>
+            <div style={styles.rowElement}></div>
+            <div style={styles.rowElement}>When I Say</div>
+            <div style={styles.rowElementLarge}>Actually I Mean</div>
+            <div style={styles.rowElement}></div>
+          </div>
+        </li>
+        {urlList.map(u =>
+          <li key={JSON.stringify(u)} style={styles.li}>
+            <Url url={u} {...others} />
+          </li>
+        )}
+        <li style={styles.li}>
+          <AddUrlBox addUrl={addUrl} />
+        </li>
+      </ul>
     </div>
   );
 }
 
-export default UrlList;
+export default Radium(UrlList);

@@ -4,6 +4,7 @@
 
 
 import React from 'react';
+import { Button, Glyphicon } from 'react-bootstrap';
 
 class SwitchInput extends React.Component {
   constructor(props) {
@@ -34,13 +35,12 @@ class SwitchInput extends React.Component {
 
     return (
       <div>
-        <span>{title}</span>
         <div onClick={this.toggleValue.bind(this)}>
           {(() => {
             if (this.getValue()) {
-              return "Selected"
+              return <Glyphicon glyph="user" />
             } else {
-              return "Not Selected"
+              return <Glyphicon glyph="globe" />
             }
           })()}
         </div>
