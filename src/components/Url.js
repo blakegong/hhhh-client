@@ -2,7 +2,7 @@
  * Created by gongy on 4/11/16.
  */
 
-import React from 'react';
+import React, { PropTypes }from 'react';
 import { Button } from 'react-bootstrap';
 import TextInput from './widgets/TextInput'
 import SwitchInput from './widgets/SwitchInput'
@@ -72,12 +72,14 @@ class Url extends React.Component {
 }
 
 Url.propTypes = {
-  url: React.PropTypes.shape({
-    slug: React.PropTypes.string,
-    target: React.PropTypes.string
-  }).required,
-  updateUrl: React.PropTypes.func,
-  removeUrl: React.PropTypes.func
+  url: PropTypes.shape({
+    slug: PropTypes.string,
+    target: PropTypes.string,
+    title: PropTypes.string,
+    is_private: PropTypes.bool
+  }).isRequired,
+  updateUrl: PropTypes.func,
+  removeUrl: PropTypes.func
 };
 
 export default Url;
