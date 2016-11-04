@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 const URL_BASE = `/api/v1/`;
 const URL_ACCOUNT = `${URL_BASE}me/`;
 const URL_URL_LIST = `${URL_BASE}url/`;
+const URL_SEARCH = `${URL_BASE}search/urls/`
 
 const baseOptions = {
   credentials: 'include',
@@ -70,13 +71,19 @@ const deleteUrl = (url) => {
   return deleteReq(`${URL_URL_LIST}${url.slug}/`);
 };
 
+const fetchSearchResult = (query) => {
+  return getJson(`${URL_SEARCH}?q=${query}`);
+};
+
 const Api = {
   fetchAccount,
 
   fetchUrlList,
   createUrl,
   updateUrl,
-  deleteUrl
+  deleteUrl,
+
+  fetchSearchResult,
 };
 
 export default Api;

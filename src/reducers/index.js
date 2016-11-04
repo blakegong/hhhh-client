@@ -4,11 +4,13 @@
 
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import urlList from './url-list';
 import account from './account';
+import search from './search';
+import urlList from './url-list';
 
 const reducer = combineReducers({
   account,
+  search,
   urlList,
   routing: routerReducer
 });

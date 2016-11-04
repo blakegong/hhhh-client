@@ -13,12 +13,15 @@ function createRequestTypes (name) {
 const FETCH_ACCOUNT = createRequestTypes('FETCH_ACCOUNT');
 const SIGN_OUT = createRequestTypes('SIGN_OUT');
 
-// Service related
+// URL related
 const FETCH_URL_LIST = createRequestTypes('FETCH_URL_LIST');
 const CREATE_URL = createRequestTypes('CREATE_URL');
 const FETCH_URL = createRequestTypes('FETCH_URL');
 const UPDATE_URL = createRequestTypes('UPDATE_URL');
 const DELETE_URL = createRequestTypes('DELETE_URL');
+
+// Search related
+const FETCH_SEARCH_RESULT = createRequestTypes('FETCH_SEARCH_RESULT');
 
 const ActionTypes = {
   FETCH_ACCOUNT,
@@ -29,6 +32,8 @@ const ActionTypes = {
   FETCH_URL,
   UPDATE_URL,
   DELETE_URL,
+
+  FETCH_SEARCH_RESULT,
 };
 
 export default ActionTypes;

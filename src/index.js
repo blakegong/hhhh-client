@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import App from './containers/App';
 import AccountPage from './containers/AccountPage';
 import Home from './containers/Home';
+import Search from './containers/Search'
 
 const sagaMiddleware = createSagaMiddleware();
 const routerHistoryMiddleware = routerMiddleware(browserHistory);
@@ -31,7 +32,8 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="a/">
-          <Route path="account/" component={AccountPage} />
+          <Route path="account/" component={AccountPage}/>
+          <Route path="search/" component={Search}/>
         </Route>
       </Route>
     </Router>
