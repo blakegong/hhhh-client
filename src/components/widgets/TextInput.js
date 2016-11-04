@@ -25,7 +25,10 @@ class TextInput extends React.Component {
   render() {
     const {
       type,
-      placeholder
+      placeholder,
+      ref,
+      value,
+      ...others
     } = this.props;
 
     return (
@@ -36,6 +39,7 @@ class TextInput extends React.Component {
           value={this.state.value}
           onFocus={this.onFocus.bind(this)}
           onChange={this.onChange.bind(this)}
+          {...others}
         />
       </div>
     );

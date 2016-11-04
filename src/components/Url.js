@@ -3,11 +3,36 @@
  */
 
 import React, { PropTypes }from 'react';
-import { Button } from 'react-bootstrap';
+import Radium from 'radium';
+import { Button, Glyphicon } from 'react-bootstrap';
 import TextInput from './widgets/TextInput'
 import SwitchInput from './widgets/SwitchInput'
 
-class Url extends React.Component {
+const styles = {
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  rowElement: {
+    padding: "10px 20px",
+    flexBasis: "20%"
+  },
+  rowElementLarge: {
+    padding: "10px 20px",
+    flexBasis: "40%"
+  },
+  url: {
+    marginLeft: "10px"
+  },
+  input: {
+    width: "100%",
+    background: "none",
+    border: "none",
+  }
+};
+
+class UrlInner extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -34,44 +59,54 @@ class Url extends React.Component {
   render () {
     if (this.state.isEditing) {
       return (
-        <tr>
-          <td>
-            g/
-            <TextInput ref={(input) => this.slugInput = input} value={this.state.slug}/>
-          </td>
-          <td>
-            <TextInput ref={(input) => this.targetInput = input} value={this.state.target}/>
-          </td>
-          <td>
-            <TextInput ref={(input) => this.titleInput = input} value={this.state.title}/>
-          </td>
-          <td>
-            <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input} value={this.state.is_private}/>
-          </td>
-          <td>
-            <Button onClick={this.toggleEdit.bind(this)}>Edit</Button>
-            <Button onClick={() => this.props.removeUrl(this.state)}>Delete</Button>
-          </td>
-        </tr>
+        <div style={styles.row}>
+          <div style={styles.rowElement}>
+            <TextInput ref={(input) => this.titleInput = input} value={this.state.title} style={styles.input}/>
+          </div>
+          <div style={styles.rowElement}>
+            <div style={{ display: "flex" }}>
+              <div style={{ width: "40px", display: "flex" }}>
+                <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input}
+                             value={this.state.is_private}/>
+                <div>g/</div>
+              </div>
+              <TextInput ref={(input) => this.slugInput = input} value={this.state.slug}
+                         style={styles.input}
+              />
+            </div>
+          </div>
+          <div style={styles.rowElementLarge}>
+            <TextInput ref={(input) => this.targetInput = input} value={this.state.target} style={styles.input}/>
+          </div>
+          <div style={styles.rowElement}>
+            <Glyphicon glyph="ok" onClick={this.toggleEdit.bind(this)} />
+          </div>
+        </div>
       );
     } else {
       return (
-        <tr>
-          <td><a href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a></td>
-          <td>{this.state.target}</td>
-          <td>{this.state.title}</td>
-          <td>{this.state.is_private ? "Private" : "Global"}</td>
-          <td>
-            <Button onClick={this.toggleEdit.bind(this)}>Edit</Button>
-            <Button onClick={() => this.props.removeUrl(this.state)}>Delete</Button>
-          </td>
-        </tr>
+        <div style={styles.row}>
+          <div style={styles.rowElement}>{this.state.title}</div>
+          <div style={styles.rowElement}>
+            {this.state.is_private ?
+              <Glyphicon glyph="user" />
+              :
+              <Glyphicon glyph="globe" />
+            }
+            <a style={styles.url} href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a>
+          </div>
+          <div style={styles.rowElementLarge}>{this.state.target}</div>
+          <div style={styles.rowElement}>
+            <Glyphicon glyph="pencil" onClick={this.toggleEdit.bind(this)} />
+            <Glyphicon style={{marginLeft: "10px"}} glyph="remove" onClick={() => this.props.removeUrl(this.state)} />
+          </div>
+        </div>
       );
     }
   }
 }
 
-Url.propTypes = {
+UrlInner.propTypes = {
   url: PropTypes.shape({
     slug: PropTypes.string,
     target: PropTypes.string,
@@ -82,4 +117,4 @@ Url.propTypes = {
   removeUrl: PropTypes.func
 };
 
-export default Url;
+export default Radium(UrlInner);
