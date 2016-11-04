@@ -3,20 +3,33 @@
  */
 
 import React, { PropTypes } from 'react';
+import RawHtml from "react-raw-html"
+
+let styles = {
+  item: {
+    background: "rgba(255, 255, 255, 0.7)",
+    textAlign: "left",
+    margin: "5px",
+  }
+}
 
 function SearchResult ({ result }) {
   if (result.description)
     return (
-      <div>
-        <div>{result.slug}</div>
+      <div style={styles.item}>
+        <div>
+          <RawHtml.div>{result.title}</RawHtml.div>
+        </div>
         <div>{result.target}</div>
-        <div>{result.title}</div>
+        <div>
+          <RawHtml.div>{result.description}</RawHtml.div>
+        </div>
         <br/>
       </div>
     );
   else
     return (
-      <div>
+      <div style={styles.item}>
         <div>{result.slug}</div>
         <div>{result.target}</div>
         <div>{result.title}</div>
@@ -27,17 +40,14 @@ function SearchResult ({ result }) {
 
 SearchResult.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
+    title: PropTypes.string,
     slug: PropTypes.string,
     target: PropTypes.string,
-    title: PropTypes.string,
-    is_private: PropTypes.bool
   }),
   PropTypes.shape({
-    description: PropTypes.string,
-    slug: PropTypes.string,
-    target: PropTypes.string,
     title: PropTypes.string,
-    is_private: PropTypes.bool
+    target: PropTypes.string,
+    description: PropTypes.string,
   }),
 ]);
 

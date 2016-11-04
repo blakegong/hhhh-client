@@ -4,6 +4,7 @@ const URL_BASE = `/api/v1/`;
 const URL_ACCOUNT = `${URL_BASE}me/`;
 const URL_URL_LIST = `${URL_BASE}url/`;
 const URL_SEARCH = `${URL_BASE}search/urls/`
+const URL_FULLTEXT = `${URL_BASE}search/fulltext/`
 
 const baseOptions = {
   credentials: 'include',
@@ -75,6 +76,10 @@ const fetchSearchResult = (query) => {
   return getJson(`${URL_SEARCH}?q=${query}`);
 };
 
+const fetchFulltextResult = (query) => {
+  return getJson(`${URL_FULLTEXT}?q=${query}`);
+};
+
 const Api = {
   fetchAccount,
 
@@ -84,6 +89,7 @@ const Api = {
   deleteUrl,
 
   fetchSearchResult,
+  fetchFulltextResult,
 };
 
 export default Api;

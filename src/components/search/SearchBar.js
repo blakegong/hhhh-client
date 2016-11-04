@@ -12,6 +12,12 @@ class SearchBar extends Component {
     }
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      document.getElementsByClassName('typeahead')[0].childNodes[0].focus()
+    }, 250)
+  }
+
   handleChange = (event) => {
     this.props.search(event.target.value);
     // console.log(event.target.value)
@@ -25,14 +31,17 @@ class SearchBar extends Component {
   };
 
   render () {
+    console.log(this.props.keywordList)
     return (
-      <Typeahead
-        placeholder={this.props.placeholder}
-        onKeyUp={this.handleChange}
-        onOptionSelected={(value) => console.log(value)}
-        options={this.props.keywordList}
-        maxVisible={5}
-      />
+      <div>
+        <Typeahead
+          placeholder={this.props.placeholder}
+          onKeyUp={this.handleChange}
+          onOptionSelected={(value) => console.log(value)}
+          options={this.props.keywordList}
+          maxVisible={5}
+        />
+      </div>
     );
   }
 }

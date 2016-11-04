@@ -5,9 +5,15 @@
 import React, { PropTypes } from 'react';
 import SearchResult from './SearchResult';
 
+const styles = {
+  ul: {
+    padding: "0"
+  }
+};
+
 function SearchResultList ({ resultList }) {
   return (
-    <ul>
+    <ul style={styles.ul}>
       {resultList.map((result, i) => <SearchResult key={i} result={result}/>)}
     </ul>
   )

@@ -4,6 +4,7 @@
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 import withLifecycle from '../utils/hoc-lifecycle';
+import {push} from 'react-router-redux'
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onWillMount: []
+    onWillMount: [],
+    goTo: (url) => dispatch(push(url)),
   }
 };
 

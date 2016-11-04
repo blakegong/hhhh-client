@@ -6,11 +6,24 @@ import React, { PropTypes } from 'react';
 import SearchBar from './SearchBar'
 import SearchResultList from './SearchResultList'
 
+let styles = {
+  page: {
+    padding: "200px 60px 20px",
+    overflow: "auto",
+    textAlign: "center"
+  },
+  content: {
+    background: "rgba(255, 255, 255, 0.7)"
+  },
+};
+
 function Search ({ keywordList, resultList, search }) {
   return (
-    <div>
+    <div style={styles.page}>
       <SearchBar keywordList={keywordList} search={search} placeholder="Search Garena"/>
-      <SearchResultList resultList={resultList}/>
+      <div style={styles.container}>
+        <SearchResultList resultList={resultList}/>
+      </div>
     </div>
   )
 }
