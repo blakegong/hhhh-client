@@ -5,6 +5,7 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
 import Url from './Url'
+import AddUrlBox from './AddUrlBox';
 
 function UrlList ({ urlList, addUrl, ...others }) {
   return (
@@ -15,6 +16,7 @@ function UrlList ({ urlList, addUrl, ...others }) {
           <th>When I say</th>
           <th>Actually I mean</th>
           <th/>
+          <th/>
         </tr>
         </thead>
         <tbody>
@@ -22,13 +24,7 @@ function UrlList ({ urlList, addUrl, ...others }) {
         </tbody>
       </Table>
 
-      <Button onClick={() => addUrl({
-        is_private: true,
-        slug: ('' + Date.now()).substring(3),
-        target: '' + Date.now()
-      })}>
-        Add Random Url
-      </Button>
+      <AddUrlBox addUrl={addUrl} />
     </div>
   );
 }

@@ -17,8 +17,9 @@ class Url extends Component {
   render () {
     return (
       <tr>
-        <td>g/{this.state.slug}</td>
+        <td><a href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a></td>
         <td>{this.state.target}</td>
+        <td>{this.state.is_private ? "Private" : "Global"}</td>
         <td><Button onClick={() => this.props.removeUrl(this.state)}>Delete</Button></td>
       </tr>
     );
@@ -27,8 +28,8 @@ class Url extends Component {
 
 Url.propTypes = {
   url: PropTypes.shape({
-    key: PropTypes.string,
-    url: PropTypes.string
+    slug: PropTypes.string,
+    target: PropTypes.string
   }),
   updateUrl: PropTypes.func,
   removeUrl: PropTypes.func
