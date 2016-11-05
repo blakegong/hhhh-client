@@ -22,6 +22,9 @@ let styles = {
     textAlign: "left",
     padding: "10px 20px",
     border: "none"
+  },
+  container: {
+    margin: "25px 0 0 0"
   }
 };
 
