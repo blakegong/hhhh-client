@@ -1,46 +1,41 @@
 /**
  * Created by zhouxz on 4/11/16.
  */
+import React, { Component } from 'react';
+import { Glyphicon } from 'react-bootstrap';
 
-
-import React from 'react';
-import { Button, Glyphicon } from 'react-bootstrap';
-
-class SwitchInput extends React.Component {
-  constructor(props) {
+class SwitchInput extends Component {
+  constructor (props) {
     super(props);
     this.state = {
       value: props['value'] || false
     };
   }
 
-  onFocus(e) {
+  onFocus (e) {
     if (this.props.onFocus)
       this.props.onFocus();
   }
 
-  toggleValue() {
+  toggleValue () {
     let value = !this.getValue();
-    this.setState({value});
+    this.setState({ value });
   }
 
-  getValue() {
+  getValue () {
     return this.state.value;
   }
 
-  render() {
-    const {
-      title
-    } = this.props;
+  render () {
 
     return (
       <div>
         <div onClick={this.toggleValue.bind(this)}>
           {(() => {
             if (this.getValue()) {
-              return <Glyphicon glyph="user" />
+              return <Glyphicon glyph="user" style={{ cursor: 'pointer' }}/>
             } else {
-              return <Glyphicon glyph="globe" />
+              return <Glyphicon glyph="globe" style={{ cursor: 'pointer' }}/>
             }
           })()}
         </div>
@@ -51,8 +46,8 @@ class SwitchInput extends React.Component {
 
 SwitchInput.propTypes = {
   value: React.PropTypes.bool,
-  title:  React.PropTypes.string,
-  onFocus:  React.PropTypes.func,
+  title: React.PropTypes.string,
+  onFocus: React.PropTypes.func,
 };
 
 SwitchInput.defaultProps = {

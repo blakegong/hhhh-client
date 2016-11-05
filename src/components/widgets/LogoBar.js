@@ -6,7 +6,6 @@ import React from 'react';
 import Radium from 'radium';
 import logo from '../../images/logo_white.png';
 
-
 let styles = {
   wrapper: {
     position: "absolute",
@@ -32,10 +31,7 @@ let styles = {
 };
 
 class LogoBar extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
+  render () {
     return (
       <div style={styles.wrapper}>
         <a style={styles.logo} onClick={() => this.props.goTo('/')}>G/</a>

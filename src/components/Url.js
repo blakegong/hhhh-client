@@ -1,12 +1,11 @@
 /**
  * Created by gongy on 4/11/16.
  */
-
-import React, { PropTypes }from 'react';
+import React, { PropTypes } from 'react';
 import Radium from 'radium';
-import { Button, Glyphicon } from 'react-bootstrap';
-import TextInput from './widgets/TextInput'
-import SwitchInput from './widgets/SwitchInput'
+import { Glyphicon } from 'react-bootstrap';
+import TextInput from './widgets/TextInput';
+import SwitchInput from './widgets/SwitchInput';
 
 const styles = {
   row: {
@@ -29,6 +28,9 @@ const styles = {
     width: "100%",
     background: "none",
     border: "none",
+  },
+  glyph: {
+    cursor: 'pointer'
   }
 };
 
@@ -79,7 +81,7 @@ class UrlInner extends React.Component {
             <TextInput ref={(input) => this.targetInput = input} value={this.state.target} style={styles.input}/>
           </div>
           <div style={styles.rowElement}>
-            <Glyphicon glyph="ok" onClick={this.toggleEdit.bind(this)} />
+            <Glyphicon glyph="ok" onClick={this.toggleEdit.bind(this)} style={styles.glyph}/>
           </div>
         </div>
       );
@@ -89,16 +91,17 @@ class UrlInner extends React.Component {
           <div style={styles.rowElement}>{this.state.title}</div>
           <div style={styles.rowElement}>
             {this.state.is_private ?
-              <Glyphicon glyph="user" />
+              <Glyphicon glyph="user"/>
               :
-              <Glyphicon glyph="globe" />
+              <Glyphicon glyph="globe"/>
             }
             <a style={styles.url} href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a>
           </div>
           <div style={styles.rowElementLarge}>{this.state.target}</div>
           <div style={styles.rowElement}>
-            <Glyphicon glyph="pencil" onClick={this.toggleEdit.bind(this)} />
-            <Glyphicon style={{marginLeft: "10px"}} glyph="remove" onClick={() => this.props.removeUrl(this.state)} />
+            <Glyphicon glyph="pencil" onClick={this.toggleEdit.bind(this)} style={styles.glyph}/>
+            <Glyphicon style={{ ...styles.glyph, marginLeft: "10px" }} glyph="remove"
+                       onClick={() => this.props.removeUrl(this.state)}/>
           </div>
         </div>
       );

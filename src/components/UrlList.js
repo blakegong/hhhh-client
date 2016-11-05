@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import Radium from 'radium';
-import { Table } from 'react-bootstrap';
 import Url from './Url';
 import AddUrlBox from './AddUrlBox';
 

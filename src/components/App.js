@@ -1,12 +1,9 @@
 /**
  * Created by gongy on 4/11/16.
  */
-
 import React from 'react';
 import AccountBar from './widgets/AccountBar';
 import LogoBar from './widgets/LogoBar';
-
-import bg1 from '../images/bg_1.jpg';
 import bg2 from '../images/bg_2.jpg';
 
 let styles = {

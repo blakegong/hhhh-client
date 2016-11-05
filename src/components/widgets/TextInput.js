@@ -1,32 +1,34 @@
 import React from 'react';
 
 class TextInput extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       value: props['value'] || ""
     };
   }
 
-  onFocus(e) {
+  onFocus (e) {
     if (this.props.onFocus)
       this.props.onFocus();
   }
 
-  onChange(e) {
+  onChange (e) {
     const value = e.target.value;
-    this.setState({value});
+    this.setState({ value });
   }
 
-  getValue() {
+  getValue () {
     return this.state.value;
   }
 
-  render() {
+  render () {
     const {
       type,
       placeholder,
+      // eslint-disable-next-line
       ref,
+      // eslint-disable-next-line
       value,
       ...others
     } = this.props;
@@ -48,9 +50,9 @@ class TextInput extends React.Component {
 
 TextInput.propTypes = {
   type: React.PropTypes.string,
-  placeholder:  React.PropTypes.string,
-  value:  React.PropTypes.string,
-  onFocus:  React.PropTypes.func,
+  placeholder: React.PropTypes.string,
+  value: React.PropTypes.string,
+  onFocus: React.PropTypes.func,
 };
 
 TextInput.defaultProps = {

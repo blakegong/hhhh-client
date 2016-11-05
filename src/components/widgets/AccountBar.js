@@ -42,11 +42,11 @@ let styles = {
   }
 };
 
-export default Radium(function({ account, goTo, ...others }) {
+export default Radium(function ({ account, goTo, ...others }) {
   if (account['email']) {
     return (
       <div style={styles.wrapper} onClick={() => goTo('/a/account/')}>
-        <img style={styles.profilePicture} src={account['profile_picture']} />
+        <img style={styles.profilePicture} src={account['profile_picture']} alt="profile"/>
         <div style={styles.info}>
           <div style={styles.username}>{account['username']}</div>
           <div style={styles.email}>{account['email']}</div>
@@ -55,10 +55,10 @@ export default Radium(function({ account, goTo, ...others }) {
     )
   } else {
     return (
-        <div style={styles.wrapper}>
-          <a href="/api/v1/google_login/">Log In</a>
-        </div>
-      )
+      <div style={styles.wrapper}>
+        <a href="/api/v1/google_login/">Log In</a>
+      </div>
+    )
   }
 
 });

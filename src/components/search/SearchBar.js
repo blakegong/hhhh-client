@@ -12,7 +12,7 @@ class SearchBar extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     setTimeout(() => {
       document.getElementsByClassName('typeahead')[0].childNodes[0].focus()
     }, 250)
@@ -20,13 +20,6 @@ class SearchBar extends Component {
 
   handleChange = (event) => {
     this.props.search(event.target.value);
-    // console.log(event.target.value)
-    // fetch(`${this.props.optionsUrl}${event.target.value}`)
-    //   .then(res => res.json())
-    //   .then((resJson) => {
-    //     console.log(resJson)
-    //     return this.props.processOptions(resJson)
-    //   });
     // TODO throttle
   };
 
@@ -47,18 +40,9 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  // optionsUrl: PropTypes.string,
-  // placeholder: PropTypes.string,
-  // processOptions: PropTypes.func,
+  placeholder: PropTypes.string,
   keywordList: PropTypes.arrayOf(PropTypes.string).isRequired,
   search: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
-
-// Sample Usage:
-// <SearchBar
-//   optionsUrl="/api/v1/search/urls/?q="
-//   placeholder="Search Garena"
-//   processOptions={(resJson) => resJson.map(url => url.title).filter(option => option !== null && option !== '')}
-// />
