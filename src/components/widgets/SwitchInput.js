@@ -26,6 +26,10 @@ class SwitchInput extends Component {
     return this.state.value;
   }
 
+  setValue(value) {
+    this.setState({value});
+  }
+
   render () {
 
     return (

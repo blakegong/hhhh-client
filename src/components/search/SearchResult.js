@@ -8,7 +8,8 @@ const styles = {
     background: "rgba(255, 255, 255, 0.7)",
     textAlign: "left",
     margin: "10px",
-    padding: "10px 15px 0 15px"
+    padding: "10px 10px 0 10px",
+    overflow: "hidden"
   },
   title: {
     fontSize: "18px",
@@ -42,7 +43,7 @@ function SearchResult ({ result }) {
     return (
       <div style={styles.item}>
         <div>
-          <a style={styles.title} href={result.target}  target="_blank">{result.title}</a>
+          <a style={styles.title} href={'http://g/' + result.slug}  target="_blank">{result.title}</a>
         </div>
         <div style={styles.link}>http://g/{result.slug}</div>
         <div style={styles.description}>A short URL link to <em>{result.target}</em>.</div>

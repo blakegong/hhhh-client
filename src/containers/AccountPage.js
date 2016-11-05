@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     const fetchUrlList = () => dispatch(Actions.fetchUrlList.requested());
 
     return {
+        addUrl: (url) => dispatch(Actions.createUrl.requested(url)),
         onWillMount: [fetchUrlList]
     }
 };

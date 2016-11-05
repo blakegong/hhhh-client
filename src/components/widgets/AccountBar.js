@@ -56,7 +56,12 @@ export default Radium(function ({ account, goTo, ...others }) {
   } else {
     return (
       <div style={styles.wrapper}>
-        <a href="/api/v1/google_login/">Log In</a>
+        <a href="/api/v1/google_login/" style={{
+          display: 'block',
+          width: '100%',
+          textAlign: 'center',
+          lineHeight: '50px'
+        }}>Log In</a>
       </div>
     )
   }

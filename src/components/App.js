@@ -12,7 +12,8 @@ let styles = {
     height: "100%",
     backgroundImage: `url(${bg2})`,
     backgroundSize: 'cover',
-    overflow: "auto"
+    overflowX: "none",
+    overflowY: "scroll"
   },
   container: {
     position: "relative"

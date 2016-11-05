@@ -28,6 +28,7 @@ const styles = {
     width: "100%",
     background: "none",
     border: "none",
+    borderBottom: "1px solid rgba(100,100,100,0.5)"
   },
   glyph: {
     cursor: 'pointer'
@@ -63,15 +64,15 @@ class UrlInner extends React.Component {
       return (
         <div style={styles.row}>
           <div style={styles.rowElement}>
-            <TextInput ref={(input) => this.titleInput = input} value={this.state.title} style={styles.input}/>
+            <div style={{ display: "flex" }}>
+              <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input}
+                           value={this.state.is_private}/>
+              <TextInput ref={(input) => this.titleInput = input} value={this.state.title} style={styles.input}/>
+            </div>
           </div>
           <div style={styles.rowElement}>
             <div style={{ display: "flex" }}>
-              <div style={{ width: "40px", display: "flex" }}>
-                <SwitchInput title="Is Private" ref={(input) => this.isPrivateInput = input}
-                             value={this.state.is_private}/>
-                <div>g/</div>
-              </div>
+              <div>g/</div>
               <TextInput ref={(input) => this.slugInput = input} value={this.state.slug}
                          style={styles.input}
               />
@@ -88,13 +89,17 @@ class UrlInner extends React.Component {
     } else {
       return (
         <div style={styles.row}>
-          <div style={styles.rowElement}>{this.state.title}</div>
           <div style={styles.rowElement}>
             {this.state.is_private ?
               <Glyphicon glyph="user"/>
               :
               <Glyphicon glyph="globe"/>
             }
+            <span style={{marginLeft: "10px"}}>
+              {this.state.title}
+            </span>
+            </div>
+          <div style={styles.rowElement}>
             <a style={styles.url} href={'http://g/' + this.state.slug} target="_blank">g/{this.state.slug}</a>
           </div>
           <div style={styles.rowElementLarge}>{this.state.target}</div>

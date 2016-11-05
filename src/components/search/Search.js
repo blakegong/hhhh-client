@@ -8,7 +8,7 @@ import SearchResultList from './SearchResultList'
 
 let styles = {
   page: {
-    padding: "200px 60px 20px",
+    padding: "200px 30px 20px",
     overflow: "auto",
     textAlign: "center"
   },
@@ -18,7 +18,7 @@ let styles = {
   searchBar: {
     display: "inline-block",
     background: "rgba(255, 255, 255, 0.6)",
-    width: "50%",
+    width: "70%",
     textAlign: "left",
     padding: "10px 20px",
     border: "none"

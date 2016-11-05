@@ -47,9 +47,6 @@ function UrlList ({ urlList, addUrl, ...others }) {
             <Url url={u} {...others} />
           </li>
         )}
-        <li style={styles.li}>
-          <AddUrlBox addUrl={addUrl} />
-        </li>
       </ul>
     </div>
   );
