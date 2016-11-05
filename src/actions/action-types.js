@@ -23,6 +23,8 @@ const DELETE_URL = createRequestTypes('DELETE_URL');
 // Search related
 const FETCH_SEARCH_RESULT = createRequestTypes('FETCH_SEARCH_RESULT');
 
+const UPDATE_SEARCH_KEY = createRequestTypes('UPDATE_SEARCH_KEY');
+
 const ActionTypes = {
   FETCH_ACCOUNT,
   SIGN_OUT,
@@ -34,6 +36,8 @@ const ActionTypes = {
   DELETE_URL,
 
   FETCH_SEARCH_RESULT,
+  UPDATE_SEARCH_KEY,
 };
+
 
 export default ActionTypes;

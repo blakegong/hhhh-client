@@ -11,14 +11,25 @@ function* fetchSearchResult ({ query }) {
   try {
     const urlList = yield call(Api.fetchSearchResult, query);
     const fulltextList = yield call(Api.fetchFulltextResult, query);
-    const keywordList = urlList.map(c => c.slug).filter(t => t !== null && t !== '' && t.indexOf(query) >= 0);
     const list = urlList.concat(fulltextList);
-    yield put(Actions.fetchSearchResult.succeeded(keywordList, list));
+    yield put(Actions.fetchSearchResult.succeeded([], list));
   } catch (error) {
     yield put(Actions.fetchSearchResult.failed(error));
   }
 }
 
+
+function* updateSearchKey ({ searchKey }) {
+  try {
+    yield put(Actions.fetchSearchResult.requested(searchKey));
+    yield put(Actions.updateSearchKey.succeeded(searchKey));
+  } catch (error) {
+    yield put(Actions.updateSearchKey.failed(error));
+  }
+}
+
+
 export default function* watchAccount () {
   yield fork(takeLatest, ActionTypes.FETCH_SEARCH_RESULT.REQUESTED, fetchSearchResult);
+  yield fork(takeLatest, ActionTypes.UPDATE_SEARCH_KEY.REQUESTED, updateSearchKey);
 }

@@ -13,5 +13,11 @@ export default {
       resultList
     }),
     failed: (error) => action(ActionTypes.FETCH_SEARCH_RESULT.FAILED, { error })
-  }
+  },
+
+  updateSearchKey: {
+    requested: (searchKey) => action(ActionTypes.UPDATE_SEARCH_KEY.REQUESTED, {searchKey}),
+    succeeded: (searchKey) => action(ActionTypes.UPDATE_SEARCH_KEY.SUCCEEDED, {searchKey}),
+    failed: (error) => action(ActionTypes.UPDATE_SEARCH_KEY.FAILED, { error })
+  },
 }

@@ -34,6 +34,7 @@ ReactDOM.render(
         <Route path="a/">
           <Route path="account/" component={AccountPage}/>
           <Route path="search/" component={Search}/>
+          <Route path="search/:query" component={Search}/>
         </Route>
       </Route>
     </Router>

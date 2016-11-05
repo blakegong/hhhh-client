@@ -28,7 +28,17 @@ const resultList = (state = [], action) => {
   }
 };
 
+const searchKey = (state = "", action) => {
+  switch (action.type) {
+    case ActionTypes.UPDATE_SEARCH_KEY.SUCCEEDED:
+      return action.searchKey;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   keywordList,
-  resultList
+  resultList,
+  searchKey,
 });

@@ -4,7 +4,8 @@
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 import withLifecycle from '../utils/hoc-lifecycle';
-import {push} from 'react-router-redux'
+import {push} from 'react-router-redux';
+import Actions from '../actions/';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +16,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onWillMount: [],
-    goTo: (url) => dispatch(push(url)),
+    goTo: (url) => {
+      dispatch(push(url));
+      dispatch(Actions.updateSearchKey.requested(''))
+    },
   }
 };
 

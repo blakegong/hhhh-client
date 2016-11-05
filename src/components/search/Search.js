@@ -3,7 +3,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import SearchBar from './SearchBar'
+import SearchInput from './SearchInput'
 import SearchResultList from './SearchResultList'
 
 let styles = {
@@ -15,12 +15,23 @@ let styles = {
   content: {
     background: "rgba(255, 255, 255, 0.7)"
   },
+  searchBar: {
+    display: "inline-block",
+    background: "rgba(255, 255, 255, 0.6)",
+    width: "50%",
+    textAlign: "left",
+    padding: "10px 20px",
+    border: "none"
+  }
 };
 
-function Search ({ keywordList, resultList, search }) {
+function Search ({ searchKey, resultList, search, onChange, params }) {
+  if (params.query && params.query != searchKey) {
+    setTimeout(() => onChange(params.query), 50);
+  }
   return (
     <div style={styles.page}>
-      <SearchBar keywordList={keywordList} search={search} placeholder="Search Garena"/>
+      <SearchInput style={styles.searchBar} placeholder="Search Garena" onChange={onChange} value={searchKey}/>
       <div style={styles.container}>
         <SearchResultList resultList={resultList}/>
       </div>
